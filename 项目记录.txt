@@ -1,0 +1,26 @@
+路线：
+获取人像
+实现代码雨功能：
+将人像作为掩膜：不能用image.mask，因为会改变alpha通道
+
+debug工具：
+F12查看console日志
+
+更改：
+peer连接端口
+p5js版本
+context.willReadFrequently
+
+增加功能：
+横屏
+自定义字符串内容，分开显示
+KEY模式多人追踪
+
+回调函数和draw的时序问题
+
+闪烁问题：
+1. 时序
+2. 掉帧：减少字符数、缩小canvas、willReadFrequently或许有帮助、放大字符
+
+人走之后删除figure：
+由于时序问题不能在render后删除，所以另外设置变量，每隔100帧修改变量
