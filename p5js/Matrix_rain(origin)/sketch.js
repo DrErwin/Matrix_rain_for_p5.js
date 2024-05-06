@@ -1,23 +1,13 @@
 /*
  * @Author: Yuhong Wu
- * @Date: 2024-04-23 20:09:16
+ * @Date: 2024-05-06 14:30:37
  * @LastEditors: Yuhong Wu
- * @LastEditTime: 2024-05-06 14:40:09
+ * @LastEditTime: 2024-05-06 14:31:09
  * @Description: 
  */
 var streams = [];
 var fadeInterval = 1.6;
-var symbolSize = 12;
-let img;
-var name_list = ["Guangdong", "Guangxi", "Beijing", "Fujian", "Hebei", "Henan", "Hubei", "Hunan", "Yunnan", "Sichuan"];
-var nameCount = 4;
-var minspeed = 2;
-var maxspeed = 6;
-
-// Load the image.
-function preload() {
-  img = loadImage('mask.jpg');
-}
+var symbolSize = 14;
 
 function setup() {
   createCanvas(
@@ -28,21 +18,14 @@ function setup() {
 
   var x = 0;
   for (var i = 0; i <= width / symbolSize; i++) {
-		for (var j = 0; j <= 2; j++){
-			var stream = new Stream(round(random(0,name_list.length-1)));
-			stream.generateSymbols(x, random(-2000, 0));
-			streams.push(stream);
-		}
+    var stream = new Stream();
+    stream.generateSymbols(x, random(-2000, 0));
+    streams.push(stream);
     x += symbolSize
   }
 
   textFont('Consolas');
   textSize(symbolSize);
-	
-	img.resize(windowWidth/1.5,windowHeight/1.5);
-	img.filter(GRAY);
-	img.loadPixels();
-
 }
 
 function draw() {
@@ -50,11 +33,9 @@ function draw() {
   streams.forEach(function(stream) {
     stream.render();
   });
-  // image(img,0,0);
-	text(mouseX+"-"+mouseY,mouseX,mouseY);
 }
 
-function Symbol(x, y, speed, first, opacity, isName=false) {
+function Symbol(x, y, speed, first, opacity) {
   this.x = x;
   this.y = y;
   this.value;
@@ -62,7 +43,6 @@ function Symbol(x, y, speed, first, opacity, isName=false) {
   this.speed = speed;
   this.first = first;
   this.opacity = opacity;
-  this.isName = isName;
 
   this.switchInterval = round(random(2, 25));
 
@@ -85,49 +65,40 @@ function Symbol(x, y, speed, first, opacity, isName=false) {
 
 }
 
-function Stream(id) {
+function Stream() {
   this.symbols = [];
-  // this.totalSymbols = round(random(5, 35));
-  this.speed = round(random(minspeed, maxspeed));
-	this.id = id;
-	this.totalSymbols = name_list[this.id].length;
+  this.totalSymbols = round(random(5, 35));
+  this.speed = random(5, 22);
 
   this.generateSymbols = function(x, y) {
     var opacity = 255;
-    // var first = round(random(0, 4)) == 1;
-    var first = true;
+    var first = round(random(0, 4)) == 1;
     for (var i =0; i <= this.totalSymbols; i++) {
       symbol = new Symbol(
         x,
         y,
         this.speed,
         first,
-        opacity,
-        this.id > nameCount ? false : true
+        opacity
       );
-			// symbol.setToRandomSymbol();
-      symbol.value = name_list[this.id].charAt(i);
+      symbol.setToRandomSymbol();
       this.symbols.push(symbol);
       opacity -= (255 / this.totalSymbols) / fadeInterval;
-      y += symbolSize;
+      y -= symbolSize;
       first = false;
     }
   }
 
   this.render = function() {
     this.symbols.forEach(function(symbol) {
-			var position = 4*(img.width*symbol.y+symbol.x);
-      if (symbol.first && symbol.isName) {
+      if (symbol.first) {
         fill(140, 255, 170, symbol.opacity);
       } else {
         fill(0, 255, 70, symbol.opacity);
       }
-			if(symbol.x<img.width && symbol.y<img.height && img.pixels[position] < 200){
-				rect(symbol.x, symbol.y, 10, 10);
-			}
-			text(symbol.value, symbol.x, symbol.y);
+      text(symbol.value, symbol.x, symbol.y);
       symbol.rain();
-      // symbol.setToRandomSymbol();
+      symbol.setToRandomSymbol();
     });
   }
 }
