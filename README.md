@@ -2,7 +2,7 @@
  * @Author: Yuhong Wu
  * @Date: 2024-05-06 21:24:51
  * @LastEditors: Yuhong Wu
- * @LastEditTime: 2024-05-06 23:27:31
+ * @LastEditTime: 2024-05-06 23:30:08
  * @Description: 
 -->
 # About the project
@@ -10,11 +10,11 @@
 This is an implementation of 
 - Visual effect of 'raining code' in the movie *Matrix*
 
-![](./resources/Matrix%20rain.gif)
+![](./resources/Matrix_rain.gif)
 
 - A mask of human figure to do human-computer interaction(HCI) with Microsoft Kinect v2
 
-![](./resources/Matrix%20rain%20mask.gif)
+![](./resources/Matrix_rain_mask.gif)
 
 This project is written in **javascript**, specifically **p5.js**, a powerful visualization library for designer and artists. 
 
