@@ -2,14 +2,16 @@
  * @Author: Yuhong Wu
  * @Date: 2024-04-23 20:09:16
  * @LastEditors: Yuhong Wu
- * @LastEditTime: 2024-05-06 14:40:09
+ * @LastEditTime: 2024-05-06 23:54:26
  * @Description: 
  */
 var streams = [];
 var fadeInterval = 1.6;
 var symbolSize = 12;
 let img;
-var name_list = ["Guangdong", "Guangxi", "Beijing", "Fujian", "Hebei", "Henan", "Hubei", "Hunan", "Yunnan", "Sichuan"];
+var name_list = ["Guangdong", "Guangxi", "Beijing",
+ "Fujian", "Hebei", "Henan", "Hubei",
+  "Hunan", "Yunnan", "Sichuan"];
 var nameCount = 4;
 var minspeed = 2;
 var maxspeed = 6;

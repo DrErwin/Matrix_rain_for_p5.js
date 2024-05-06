@@ -2,7 +2,7 @@
  * @Author: Yuhong Wu
  * @Date: 2024-05-06 21:24:51
  * @LastEditors: Yuhong Wu
- * @LastEditTime: 2024-05-06 23:30:08
+ * @LastEditTime: 2024-05-06 23:53:28
  * @Description: 
 -->
 # About the project
@@ -37,6 +37,8 @@ If you don't need figure mask, just use `p5js/Matrix_rain` or `p5js/Matrix_rain(
 ***Don't use `kinectron-client.js` from kinectron! There were some bugs. Just use the file in the project.***
 
 ***Your p5js version should be no more than 0.9.0 !***
+
+If you find the canvas is flashing, that's mainly because FPS meet hardware limitations. You can either decrease the amount of symbols or set a lower `frameRate()`.
 
 ---
 
