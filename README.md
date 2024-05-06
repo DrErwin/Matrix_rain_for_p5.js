@@ -10,11 +10,11 @@
 This is an implementation of 
 - Visual effect of 'raining code' in the movie *Matrix*
 
-![](./resources/Matrix_rain.gif)
+![image](resources/Matrix_rain.gif)
 
 - A mask of human figure to do human-computer interaction(HCI) with Microsoft Kinect v2
 
-![](./resources/Matrix_rain_mask.gif)
+![image](resources/Matrix_rain_mask.gif)
 
 This project is written in **javascript**, specifically **p5.js**, a powerful visualization library for designer and artists. 
 
